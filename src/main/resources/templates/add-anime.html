@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th:="http://www.thymeleaf.org"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Anime</title>
+</head>
+<body>
+   <form th:action="@{/anime}" th::object="${anime}" method="post">
+       <div>
+           <label for="animeName">Anime Name</label>
+           <input id="animeName" type="text" th:field="*{animeName}">
+       </div>
+       <div>
+           <label for="description">Anime Name</label>
+           <textarea id="description" type="text" th:field="*{description}"></textarea>
+       </div>
+   </form>
+</body>
+</html>

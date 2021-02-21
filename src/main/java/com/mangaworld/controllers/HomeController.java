@@ -1,4 +1,4 @@
-package controllers;
+package com.mangaworld.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +10,6 @@ public class HomeController {
 
     @GetMapping
     public String getHomePage(){
-        return "index";
+        return "anime-world";
     }
 }
