@@ -1,4 +1,4 @@
-package models;
+package com.mangaworld.animeworld.models;
 
 public class Anime {
     private String animeName;

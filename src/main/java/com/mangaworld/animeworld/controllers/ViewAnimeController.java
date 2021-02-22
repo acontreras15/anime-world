@@ -1,4 +1,4 @@
-package com.mangaworld.controllers;
+package com.mangaworld.animeworld.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ViewAnimeController {
 
     @GetMapping
-    public String displayAnime(@ModelAttribute("storedAnime") Object flashAttribute, Model model) {
+    public String displayAnime(@ModelAttribute("storedAnime") Object flashAttribute,  Model model) {
         model.addAttribute("storedAnime", flashAttribute);
         return "display-anime";
     }

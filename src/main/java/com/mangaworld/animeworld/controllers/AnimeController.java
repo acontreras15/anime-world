@@ -1,6 +1,6 @@
-package com.mangaworld.controllers;
+package com.mangaworld.animeworld.controllers;
 
-import models.Anime;
+import com.mangaworld.animeworld.models.Anime;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/add")
 public class AnimeController {
 
     @GetMapping
