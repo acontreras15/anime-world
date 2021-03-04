@@ -2,32 +2,44 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <th:block th:insert="fragments/anime-base :: headerFiles"></th:block>
     <title>Add Anime</title>
 </head>
 <body>
-   <form th:action="@{/add}" th:object="${anime}" method="post">
-       <div>
-           <label for="animeName">Anime Name</label>
-           <input id="animeName" type="text" th:field="*{animeName}"/>
+    <div th:replace="fragments/anime-base :: navigation"></div>
+    <div th:replace="fragments/anime-base :: header"></div>
+   <form class="mt-5" th:action="@{/add}" th:object="${anime}" method="post">
+       <div class="container-fluid">
+           <div class="row justify-content-center mb-3">
+               <div class="col-7 col-md-3 col-lg-auto">
+                   <input id="animeName" type="text" th:field="*{animeName}" placeholder="Anime Name"/>
+                   </div>
+           </div>
+           <div class="row justify-content-center mb-3">
+               <div class="col-7 col-md-3 col-lg-auto">
+                   <textarea id="description" type="text" th:field="*{description}" placeholder="Description"></textarea>
+               </div>
+           </div>
+           <div class="row justify-content-center mb-3">
+               <div class="col-7 col-md-3 col-lg-auto">
+                   <input id="genre" type="text" th:field="*{genre}" placeholder="Genre"/>
+               </div>
+           </div>
+           <div class="row justify-content-center mb-3">
+               <div class="col-7 col-md-3 col-lg-auto">
+                   <input id="episodes" type="number" th:field="*{episodes}" placeholder="Episodes"/>
+               </div>
+           </div>
+           <div class="row justify-content-center mb-3">
+               <div class="col-7 col-md-3 col-lg-auto">
+                   <input class="btn btn-light btn-outline-dark" type="submit" value="Submit"/>
+               </div>
+           </div>
        </div>
-       <br>
-       <div>
-           <label for="description">Description</label>
-           <textarea id="description" type="text" th:field="*{description}"></textarea>
-       </div>
-       <br>
-       <div>
-           <label for="genre">Genre</label>
-           <input id="genre" type="text" th:field="*{genre}"/>
-       </div>
-       <br>
-       <div>
-           <label for="episodes">Episodes</label>
-           <input id="episodes" type="number" th:field="*{episodes}"/>
-       </div>
-       <br>
-       <input type="submit" value="Submit"/>
+
+
    </form>
+    <div th:replace="fragments/anime-base :: footer"></div>
 </body>
+<th:block th:replace="fragments/anime-base :: scripts"></th:block>
 </html>

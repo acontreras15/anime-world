@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th:="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+   <th:block th:insert="fragments/anime-base :: headerFiles"></th:block>
     <title>Anime World</title>
 </head>
 <body>
-    <h2>Trigun Badlands Rumble</h2>
+<div th:replace="fragments/anime-base :: navigation"></div>
+<div class="container-fluid">
+    <div class="row justify-content-center mt-3 mb-3">
+        <div class="col-12 text-center">
+            <img id="animeOne" th:src="@{/img/bleach.jpeg}" />
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/anime-base :: header"></div>
+<div class="container-fluid">
+    <div class="row justify-content-center mb-3">
+        <div class="col-12">
+            <h2 class="text-center">Anime of the Week</h2>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/anime-base :: footer"></div>
 </body>
+<th:block th:replace="fragments/anime-base :: scripts"></th:block>
 </html>
