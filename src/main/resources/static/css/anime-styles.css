@@ -8,12 +8,7 @@
     width: 50px;
     height: 50px;
 }
-.nav-link{
-    color: black;
-}
-.nav-link.active{
-    color: darkred;
-}
+
 
 .footer{
     position: absolute;
