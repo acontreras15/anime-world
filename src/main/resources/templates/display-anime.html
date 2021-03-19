@@ -8,44 +8,28 @@
 <body>
 <div th:replace="fragments/anime-base :: navigation"></div>
 <div th:replace="fragments/anime-base :: header"></div>
-<div class="container-fluid">
-    <div class="row justify-content-center mb-3 mt-3">
-        <div class="col-12">
-            <h3 class="text-center">Your Anime</h3>
-        </div>
-    </div>
-    <div class="row justify-content-center mb-3 mt-3">
-        <div class="col-6">
-            <h4 class="text-center">Anime Name</h4>
-        </div>
-        <div class="col-6">
-            <h4 class="text-center">Description</h4>
-        </div>
-    </div>
-    <div class="row justify-content-center mb-3 mt-3">
-        <div class="col-6">
-            <div th:text="${storedAnime.getAnimeName()}" class="text-center"></div>
-        </div>
-        <div class="col-6">
-            <div th:text="${storedAnime.getDescription()}" class="text-center"></div>
-        </div>
-    </div>
-    <div class="row justify-content-center mb-3 mt-3">
-        <div class="col-6">
-            <h4 class="text-center">Episodes</h4>
-        </div>
-        <div class="col-6">
-            <h4 class="text-center">Genre</h4>
-        </div>
-    </div>
-    <div class="row justify-content-center mb-3 mt-3">
-        <div class="col-6">
-            <div th:text="${storedAnime.getEpisodes()}" class="text-center"></div>
-        </div>
-        <div class="col-6">
-            <div th:text="${storedAnime.getGenre()}" class="text-center"></div>
-        </div>
-    </div>
+<div class="container-fluid mt-5">
+   <div th:each="a: ${anime}">
+       <div class="row justify-content-center mb-5">
+           <div class="col-2 col-md-4"></div>
+           <div class="col-8 col-md-4 card">
+               <div class="card-body">
+                   <h5 class="card-title" th:text="${a.animeName}"></h5>
+                   <span th:text="'Description: ' + ${a.description}"></span>
+                   <br>
+                   <span th:text="'Genre: ' + ${a.genre}"></span>
+                   <br>
+                   <span th:text="'Episodes: ' + ${a.episodes}"></span>
+                   <br>
+                   <span th:text="'Date created: ' + ${#temporals.format(a.created, 'dd-MM-yyyy HH:mm')}"></span>
+                   <br>
+                   <span th:text="'Date modified: ' + ${#temporals.format(a.modified, 'dd-MM-yyyy HH:mm')}"></span>
+
+               </div>
+           </div>
+           <div class="col-2 col-md-4"></div>
+       </div>
+   </div>
 </div>
 <div th:replace="fragments/anime-base :: footer"></div>
 </body>
