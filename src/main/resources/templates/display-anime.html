@@ -14,17 +14,29 @@
            <div class="col-2 col-md-4"></div>
            <div class="col-8 col-md-4 card">
                <div class="card-body">
-                   <h5 class="card-title" th:text="${a.animeName}"></h5>
-                   <span th:text="'Description: ' + ${a.description}"></span>
-                   <br>
-                   <span th:text="'Genre: ' + ${a.genre}"></span>
-                   <br>
-                   <span th:text="'Episodes: ' + ${a.episodes}"></span>
-                   <br>
-                   <span th:text="'Date created: ' + ${#temporals.format(a.created, 'dd-MM-yyyy HH:mm')}"></span>
-                   <br>
-                   <span th:text="'Date modified: ' + ${#temporals.format(a.modified, 'dd-MM-yyyy HH:mm')}"></span>
+                   <h5 class="card-title d-inline" th:text="${a.animeName}"></h5>
+                   <a th:href="@{/add/view/{id}(id=${a.id})}" class="ml-3 text-dark"><i class="fas fa-eye"></i></a>
+                   <a class="ml-3 text-danger"
+                      data-toggle="modal"
+                    data-target="#animeModal"><i class="fas fa-trash-alt"></i></a>
+                   <div class="modal fade" id="animeModal" role="dialog">
+                    <div class="modal-content">
+                       <div class="modal-body">
+                           <h5>Are you sure you want to delete?</h5>
+                       </div>
+                        <div class="modal-footer">
+                            <a th:href="@{/add/delete/{id}(id=${a.id})}" class="btn btn-primary" role="button">Yes</a>
+                            <button type="button" class="btn btn-dark">No</button>
+                        </div>
 
+                    </div>
+                   </div>
+                   <br>
+                   <span th:text="${a.genre}"></span>
+                   <br>
+                   <span th:text="${a.description}"></span>
+                   <br>
+                   <span th:text="${a.episodes}"></span>
                </div>
            </div>
            <div class="col-2 col-md-4"></div>

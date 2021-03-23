@@ -15,6 +15,7 @@ public class Anime {
     private long id;
 
     @NotBlank(message = "Anime name cannot be blank")
+    @Column(unique = true)
     private String animeName;
 
     @NotBlank(message = "Anime needs a genre")
@@ -93,6 +94,8 @@ public class Anime {
         this.modified = modified;
     }
 
+    public long getId() { return this.id; }
+
     @PrePersist
     public void onCreate(){
         this.setCreated(LocalDateTime.now());
@@ -108,4 +111,5 @@ public class Anime {
     public String toString() {
         return "Your Anime";
     }
+
 }
