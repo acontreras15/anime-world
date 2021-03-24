@@ -14,7 +14,7 @@
 </head>
 <body>
    <nav th:fragment="navigation" class="navbar navbar-custom navbar-expand-lg navbar-light bg-light border border-dark">
-       <a class="navbar-brand" th:href="@{/}"><img id="logo" th:src="@{img/bleach-logo.jpg}"></a>
+       <a class="navbar-brand" th:href="@{/}"><img id="logo" th:src="@{/img/bleach-logo.jpg}"></a>
        <button class="navbar-toggler" type="button" data-toggle="collapse"
                data-target="#navbarContent" aria-controls="navbarContent"
                aria-expanded="false" aria-label="Toggle navigation">
@@ -26,10 +26,10 @@
                        <a class="nav-link" th:href="@{/}">Home</a>
                    </li>
                    <li class="nav-item" th:classappend="${#request.getServletPath() == '/add' ? 'active' : ''}">
-                       <a class="nav-link" th:href="@{/add}">Add Anime</a>
+                       <a class="nav-link" th:href="@{/anime/add}">Add Anime</a>
                    </li>
                    <li class="nav-item" th:classappend="${#request.getServletPath() == '/view-anime' ? 'active' : ''}">
-                       <a class="nav-link" th:href="@{/view-anime}">Anime Archive</a>
+                       <a class="nav-link" th:href="@{/anime/view}">Anime Archive</a>
                    </li>
                </ul>
            </div>

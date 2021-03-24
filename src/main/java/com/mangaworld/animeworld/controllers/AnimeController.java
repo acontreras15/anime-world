@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 
 @Controller
-@RequestMapping("/add")
+@RequestMapping("/anime")
 public class AnimeController {
 
     private AnimeRepository animeRepo;
@@ -24,20 +24,13 @@ public class AnimeController {
         this.animeRepo = animeRepo;
     }
 
-    @GetMapping
+    @GetMapping("/add")
     public String showAnimeForm(Model model){
         model.addAttribute("anime", new Anime());
         return "add-anime";
     }
 
-    @GetMapping("/view/{id}")
-    public String showAnime(@PathVariable Long id, Model model){
-        Anime anime = this.animeRepo.findById(id).get();
-        model.addAttribute("anime", anime);
-        return "view-anime";
-    }
-
-    @PostMapping
+    @PostMapping("/add")
     public String handleAnimeForm(@Valid @ModelAttribute("anime") Anime anime, Errors errors) {
         if(errors.hasErrors())
             return "add-anime";
@@ -49,7 +42,14 @@ public class AnimeController {
             return "add-anime";
         }
 
-        return "redirect:/view-anime";
+        return "redirect:/anime/view";
+    }
+
+    @GetMapping("/view/{id}")
+    public String showAnime(@PathVariable Long id, Model model){
+        Anime anime = this.animeRepo.findById(id).get();
+        model.addAttribute("anime", anime);
+        return "view-anime";
     }
 
     @PostMapping("/edit/{id}")
@@ -66,7 +66,7 @@ public class AnimeController {
             return "view-anime";
         }
 
-        return "redirect:/view-anime";
+        return "redirect:/anime/view";
     }
 
     private void updateOriginalAnime(Anime original, Anime update){
@@ -79,7 +79,8 @@ public class AnimeController {
 
     @GetMapping("/delete/{id}")
     public String deleteAnime(@PathVariable Long id){
+        System.out.println(id);
         this.animeRepo.deleteById(id);
-        return "redirect:/view-anime";
+        return "redirect:/anime/view";
     }
 }
