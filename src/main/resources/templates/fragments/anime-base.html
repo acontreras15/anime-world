@@ -31,6 +31,9 @@
                    <li class="nav-item" th:classappend="${#request.getServletPath() == '/view-anime' ? 'active' : ''}">
                        <a class="nav-link" th:href="@{/anime/view}">Anime Archive</a>
                    </li>
+                   <li class="nav-item" th:classappend="${#request.getServletPath() == '/view-anime' ? 'active' : ''}">
+                       <a class="nav-link" th:href="@{/genre/view}">Genre Anime</a>
+                   </li>
                </ul>
            </div>
 

@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <form class="mt-5" th:action="@{/add/edit/{id}(id=${anime.id})}" th:object="${anime}" method="post">
+    <form class="mt-5" th:action="@{/anime/edit/{id}(id=${anime.id})}" th:object="${anime}" method="post">
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-7 col-md-3 col-lg-auto">
@@ -86,7 +86,7 @@
             <div class="row justify-content-center mb-3">
                 <div class="col-7 col-md-3 col-lg-auto">
                     <input class="btn btn-light btn-outline-dark" type="submit" value="Submit"/>
-                    <a class="ml-2 btn btn-light btn-outline-dark" th:href="@{/view}">Cancel</a>
+                    <a class="ml-2 btn btn-light btn-outline-dark" th:href="@{/anime/view}">Cancel</a>
                 </div>
             </div>
         </div>
