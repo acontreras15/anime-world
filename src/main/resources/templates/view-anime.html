@@ -90,8 +90,51 @@
                 </div>
             </div>
         </div>
+        <div class="container-fluid mt-5">
+            <div class="row justify-content-center mb-5">
+                <h3>Weekly Anime</h3>
+            </div>
+            <div th:each="animeWeekly: *{weeklyAnime}">
+                <div class="row justify-content-center mb-5">
+                    <div class="col-2 col-md-4"></div>
+                    <div class="col-8 col-md-4 card">
+                        <div class="card-body">
+                            <h4 class="card-title d-inline" th:text="${animeWeekly.animeName}"></h4>
+                            <a class="ml-3 text-danger"
+                               data-toggle="modal"
+                               th:data-target="'#animeModal'+${anime.id}"><i class="fas fa-trash-alt"></i></a>
+                            <div class="modal fade" th:id="'animeModal'+${anime.id}" role="dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div class="modal-header">
+                                            <h5>Are you sure you want to delete?</h5>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a th:href="@{/anime/{id}/delete-weekly/{weeklyId}(id=${anime.id}, weeklyId=${animeWeekly.id})}" class="btn btn-primary" role="button">Yes</a>
+                                        <a type="button" class="btn btn-dark" th:href="@{/anime/view}">No</a>
+                                    </div>
 
-
+                                </div>
+                            </div>
+                            <br>
+                            <h5 class="card-title d-inline">Genre</h5>
+                            <br>
+                            <span th:text="${animeWeekly.genre}"></span>
+                            <br>
+                            <h5 class="card-title d-inline">Description</h5>
+                            <br>
+                            <span th:text="${animeWeekly.description}"></span>
+                            <br>
+                            <h5 class="card-title d-inline">Episodes</h5>
+                            <br>
+                            <span th:text="${animeWeekly.episodes}"></span>
+                        </div>
+                    </div>
+                    <div class="col-2 col-md-4"></div>
+                </div>
+            </div>
+        </div>
     </form>
     <div th:replace="fragments/anime-base :: footer"></div>
 </body>

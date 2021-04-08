@@ -1,7 +1,9 @@
 package com.mangaworld.animeworld.controllers;
 
 import com.mangaworld.animeworld.data.AnimeRepository;
+import com.mangaworld.animeworld.data.WeeklyRepository;
 import com.mangaworld.animeworld.models.Anime;
+import com.mangaworld.animeworld.models.Weekly;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -12,20 +14,25 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/anime")
 public class AnimeController {
 
     private AnimeRepository animeRepo;
+    private WeeklyRepository weeklyRepo;
 
     @Autowired
-    public AnimeController(AnimeRepository animeRepo){
+    public AnimeController(AnimeRepository animeRepo, WeeklyRepository weeklyRepo){
         this.animeRepo = animeRepo;
+        this.weeklyRepo = weeklyRepo;
     }
 
     @GetMapping("/add")
     public String showAnimeForm(Model model){
+        List<Weekly> weeklyA = (List<Weekly>) weeklyRepo.findAll();
+        model.addAttribute("weeklyA", weeklyA);
         model.addAttribute("anime", new Anime());
         return "add-anime";
     }
@@ -83,4 +90,13 @@ public class AnimeController {
         this.animeRepo.deleteById(id);
         return "redirect:/anime/view";
     }
+
+   @GetMapping("/{id}/delete-weekly/{weeklyId}")
+    public String deleteWeekly(@PathVariable Long id, @PathVariable Long weeklyId, Model model){
+        Anime originalAnime = this.animeRepo.findById(id).get();
+        Weekly weekly = this.weeklyRepo.findById(weeklyId).get();
+        originalAnime.getWeeklyAnime().remove(weekly);
+        this.animeRepo.save(originalAnime);
+        return "redirect:/anime/view/" + id;
+   }
 }

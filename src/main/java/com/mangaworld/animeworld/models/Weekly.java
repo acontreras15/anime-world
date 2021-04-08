@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class AnimeGenre {
+public class Weekly {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -27,14 +27,14 @@ public class AnimeGenre {
 
     private String genre;
 
-    public AnimeGenre(){
+    public Weekly(){
         this.animeName = "";
         this.genre = "";
         this.description = "";
         this.episodes = 0;
     }
 
-    public AnimeGenre(String animeName, String animeGenre, String description, int episodes) {
+    public Weekly(String animeName, String animeGenre, String description, int episodes) {
         this.animeName = animeName;
         this.genre = animeGenre;
         this.description = description;
@@ -80,5 +80,23 @@ public class AnimeGenre {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    @Override
+    public String toString(){return this.animeName;}
+
+    @Override
+    public boolean equals(Object o){
+        if(!(o instanceof Weekly))
+            return false;
+
+        Weekly w = (Weekly) o;
+
+        return this.animeName.equals(w.animeName) && this.description.equals(w.description) && this.genre.equals(w.genre);
+    }
+
+    @Override
+    public int hashCode() {
+    return this.animeName.hashCode();
     }
 }

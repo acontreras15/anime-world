@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 public class Anime {
@@ -31,6 +32,9 @@ public class Anime {
 
     private LocalDateTime created;
     private LocalDateTime modified;
+
+    @OneToMany
+    private Set<Weekly> weeklyAnime;
 
     public Anime(){
         this.animeName = "";
@@ -95,6 +99,14 @@ public class Anime {
     }
 
     public long getId() { return this.id; }
+
+    public Set<Weekly> getWeeklyAnime() {
+        return weeklyAnime;
+    }
+
+    public void setWeeklyAnime(Set<Weekly> weeklyAnime) {
+        this.weeklyAnime = weeklyAnime;
+    }
 
     @PrePersist
     public void onCreate(){
