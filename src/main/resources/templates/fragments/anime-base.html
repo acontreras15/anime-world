@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <th:block th:fragment="headerFiles">
         <meta charset="UTF-8">
@@ -25,16 +26,20 @@
                    <li class="nav-item" th:classappend="${#request.getServletPath() == '/' ? 'active' : ''}">
                        <a class="nav-link" th:href="@{/}">Home</a>
                    </li>
-                   <li class="nav-item" th:classappend="${#request.getServletPath() == '/add' ? 'active' : ''}">
+                   <li class="nav-item" th:classappend="${#request.getServletPath() == '/add' ? 'active' : ''}"
+                        sec:authorize="isAuthenticated()">
                        <a class="nav-link" th:href="@{/anime/add}">Add Anime</a>
                    </li>
-                   <li class="nav-item" th:classappend="${#request.getServletPath() == '/view-anime' ? 'active' : ''}">
+                   <li class="nav-item" th:classappend="${#request.getServletPath() == '/view-anime' ? 'active' : ''}"
+                       sec:authorize="isAuthenticated()">
                        <a class="nav-link" th:href="@{/anime/view}">Anime Archive</a>
                    </li>
-                   <li class="nav-item" th:classappend="${#request.getServletPath() == '/view-anime' ? 'active' : ''}">
+                   <li class="nav-item" th:classappend="${#request.getServletPath() == '/view-anime' ? 'active' : ''}"
+                       sec:authorize="isAuthenticated()">
                        <a class="nav-link" th:href="@{/weekly/view}">Anime of the Week</a>
                    </li>
                </ul>
+               <a th:href="@{/logout}" class="btn btn-light btn-outline-dark" sec:authorize="isAuthenticated()">Logout</a>
            </div>
 
        </nav>
@@ -42,7 +47,7 @@
        <div class="container-fluid">
            <div class="row justify-content-center mb-3">
                <div class="col-12">
-                   <h2 class="text-center">Anime</h2>
+                   <h2 class="text-center">Anime World</h2>
                </div>
            </div>
        </div>

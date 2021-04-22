@@ -33,6 +33,8 @@ public class Anime {
     private LocalDateTime created;
     private LocalDateTime modified;
 
+
+
     @OneToMany
     private Set<Weekly> weeklyAnime;
 

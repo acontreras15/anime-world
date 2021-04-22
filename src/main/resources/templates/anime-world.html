@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
    <th:block th:insert="fragments/anime-base :: headerFiles"></th:block>
     <title>Anime World</title>
 </head>
 <body>
 <div th:replace="fragments/anime-base :: navigation"></div>
+<div th:replace="fragments/anime-base :: header"></div>
 <div class="container-fluid">
     <div class="row justify-content-center mt-3 mb-3">
         <div class="col-12 text-center">
@@ -14,14 +16,23 @@
         </div>
     </div>
 </div>
-<div th:replace="fragments/anime-base :: header"></div>
 <div class="container-fluid">
-    <div class="row justify-content-center mb-3">
-        <div class="col-12">
-            <h2 class="text-center">Anime of the Week</h2>
+    <div class="row justify-content-center mb-3" sec:authorize="isAuthenticated()">
+        <div class="col-8 col-md-3 text-center">
+            <h4 th:text="'Welcome ' + ${user.firstName} + ' ' + ${user.lastName} + '!'"></h4>
+        </div>
+    </div>
+    <div class="row justify-content-center mb-3" sec:authorize="isAnonymous()">
+        <div class="col-4 col-md-8 text-center">
+            <a th:href="@{/login}" class="btn btn-light btn-outline-dark">Login</a>
+        </div>
+        <div class="col-4 col-md-8 text-center" sec:authorize="isAnonymous()">
+            <a th:href="@{/signup}" class="btn btn-light btn-outline-dark">Sign Up</a>
         </div>
     </div>
 </div>
+
+
 <div th:replace="fragments/anime-base :: footer"></div>
 </body>
 <th:block th:replace="fragments/anime-base :: scripts"></th:block>

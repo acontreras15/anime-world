@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:insert="fragments/anime-base :: headerFiles"></th:block>
+    <title>Sign Up</title>
+</head>
+<body>
+<div th:replace="fragments/anime-base :: header"></div>
+<form class="mt-5" th:action="@{/signup}" th:object="${user}" method="post">
+    <div class="container-fluid">
+
+        <div class="row justify-content-center">
+            <div class="col-7 col-md-3 col-lg-auto">
+                <input id="email" type="text" th:field="*{email}" placeholder="Email"/>
+            </div>
+        </div>
+        <div class="row justify-content-center mb-3">
+            <div class="col-7 col-md-3 col-lg-auto">
+                   <span class="text-danger small" th:if="${#fields.hasErrors('email')}"
+                         th:errors="*{email}">
+                   </span>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-7 col-md-3 col-lg-auto">
+                <input id="password" type="password" th:field="*{password}" placeholder="Password"/>
+            </div>
+        </div>
+        <div class="row justify-content-center mb-3">
+            <div class="col-7 col-md-3 col-lg-auto">
+                   <span class="text-danger small" th:if="${#fields.hasErrors('password')}"
+                         th:errors="*{password}">
+                   </span>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-7 col-md-3 col-lg-auto">
+                <input id="userName" type="text" th:field="*{username}" placeholder="Username"/>
+            </div>
+        </div>
+        <div class="row justify-content-center mb-3">
+            <div class="col-7 col-md-3 col-lg-auto">
+                   <span class="text-danger small" th:if="${#fields.hasErrors('username')}"
+                         th:errors="*{username}">
+                   </span>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-7 col-md-3 col-lg-auto">
+                <input id="firstName" type="text" th:field="*{firstName}" placeholder="First Name"/>
+            </div>
+        </div>
+        <div class="row justify-content-center mb-3">
+            <div class="col-7 col-md-3 col-lg-auto">
+                   <span class="text-danger small" th:if="${#fields.hasErrors('firstName')}"
+                         th:errors="*{firstName}">
+                   </span>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-7 col-md-3 col-lg-auto">
+                <input id="lastName" type="text" th:field="*{lastName}" placeholder="Last Name"/>
+            </div>
+        </div>
+        <div class="row justify-content-center mb-3">
+            <div class="col-7 col-md-3 col-lg-auto">
+                   <span class="text-danger small" th:if="${#fields.hasErrors('lastName')}"
+                         th:errors="*{lastName}">
+                   </span>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-3">
+            <div class="col-7 col-md-3 col-lg-auto">
+                <input class="btn btn-light btn-outline-dark" type="submit" value="Submit"/>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+<div th:replace="fragments/anime-base :: footer"></div>
+</body>
+<th:block th:replace="fragments/anime-base :: scripts"></th:block>
+</html>
