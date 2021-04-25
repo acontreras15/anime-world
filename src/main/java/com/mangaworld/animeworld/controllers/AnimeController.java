@@ -3,9 +3,11 @@ package com.mangaworld.animeworld.controllers;
 import com.mangaworld.animeworld.data.AnimeRepository;
 import com.mangaworld.animeworld.data.WeeklyRepository;
 import com.mangaworld.animeworld.models.Anime;
+import com.mangaworld.animeworld.models.User;
 import com.mangaworld.animeworld.models.Weekly;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -38,13 +40,14 @@ public class AnimeController {
     }
 
     @PostMapping("/add")
-    public String handleAnimeForm(@Valid @ModelAttribute("anime") Anime anime, Errors errors) {
+    public String handleAnimeForm(@Valid @ModelAttribute("anime") Anime anime, Errors errors, @AuthenticationPrincipal User user) {
         if(errors.hasErrors())
             return "add-anime";
 
-        try{
+        try {
+            anime.setUser(user);
             this.animeRepo.save(anime);
-        }catch(DataIntegrityViolationException e){
+        } catch(DataIntegrityViolationException e){
             errors.rejectValue("animeName", "Anime already stored", "Please add a different anime");
             return "add-anime";
         }

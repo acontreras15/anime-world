@@ -25,10 +25,10 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-/*
-    @OneToMany(mappedBy = "user")
-    private Set<Anime> Animes;
-*/
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Anime> animes;
+
 
     private String firstName;
     private String lastName;
@@ -113,6 +113,14 @@ public class User implements UserDetails {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Set<Anime> getAnimes() {
+        return animes;
+    }
+
+    public void setAnimes(Set<Anime> animes) {
+        this.animes = animes;
     }
 
     @Override

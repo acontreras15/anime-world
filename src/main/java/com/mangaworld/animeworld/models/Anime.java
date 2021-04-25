@@ -33,6 +33,10 @@ public class Anime {
     private LocalDateTime created;
     private LocalDateTime modified;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id")
+    private User user;
+
 
 
     @OneToMany
@@ -108,6 +112,14 @@ public class Anime {
 
     public void setWeeklyAnime(Set<Weekly> weeklyAnime) {
         this.weeklyAnime = weeklyAnime;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @PrePersist
