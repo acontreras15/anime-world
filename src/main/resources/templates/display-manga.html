@@ -3,30 +3,30 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:insert="fragments/anime-base :: headerFiles"></th:block>
-    <title>Anime Of The Week</title>
+    <title>Manga Archive</title>
 </head>
 <body>
 <div th:replace="fragments/anime-base :: navigation"></div>
 <div th:replace="fragments/anime-base :: header"></div>
 <div class="container-fluid mt-5">
-    <div th:each="weeklyAnime: ${weeklyA}">
+    <div th:each="Manga: ${manga}">
         <div class="row justify-content-center mb-5">
             <div class="col-2 col-md-4"></div>
             <div class="col-8 col-md-4 card">
                 <div class="card-body">
-                    <h4 class="card-title d-inline" th:text="${weeklyAnime.animeName}"></h4>
+                    <h4 class="card-title d-inline" th:text="${Manga.mangaName}"></h4>
                     <br>
                     <h5 class="card-title d-inline">Genre</h5>
                     <br>
-                    <span th:text="${weeklyAnime.genre}"></span>
+                    <span th:text="${Manga.genre}"></span>
                     <br>
                     <h5 class="card-title d-inline">Description</h5>
                     <br>
-                    <span th:text="${weeklyAnime.description}"></span>
+                    <span th:text="${Manga.volumes}"></span>
                     <br>
                     <h5 class="card-title d-inline">Episodes</h5>
                     <br>
-                    <span th:text="${weeklyAnime.episodes}"></span>
+                    <span th:text="${Manga.chapters}"></span>
                 </div>
             </div>
             <div class="col-2 col-md-4"></div>

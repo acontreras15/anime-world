@@ -9,86 +9,86 @@
     <div th:replace="fragments/anime-base :: navigation"></div>
     <div th:replace="fragments/anime-base :: header"></div>
    <form class="mt-5" th:action="@{/anime/add}" th:object="${anime}" method="post">
+
        <div class="container-fluid">
-           <div class="row justify-content-center">
-               <div class="col-7 col-md-3 col-lg-auto">
-                   <input id="animeName" type="text" th:field="*{animeName}" placeholder="Anime Name"/>
+
+            <div class="form-group">
+                <div class="row justify-content-center">
+                   <div>
+                        <label for="manga" class="col-form-label">Select Anime/Manga Name:</label>
                    </div>
-           </div>
-           <div class="row justify-content-center mb-3">
-               <div class="col-7 col-md-3 col-lg-auto">
-                   <span class="text-danger small" th:if="${#fields.hasErrors('animeName')}"
-                          th:errors="*{animeName}">
-                   </span>
                </div>
-           </div>
-
-           <div class="row justify-content-center">
-               <div class="col-7 col-md-3 col-lg-auto">
-                   <textarea id="description" type="text" th:field="*{description}" placeholder="Description"></textarea>
-               </div>
-           </div>
-           <div class="row justify-content-center mb-3">
-               <div class="col-7 col-md-3 col-lg-auto">
-                   <span class="text-danger small" th:if="${#fields.hasErrors('description')}"
-                         th:errors="*{description}">
-                   </span>
-               </div>
-           </div>
-           <div class="row justify-content-center">
-               <div class="col-7 col-md-3 col-lg-auto">
-                   <label>Genre</label>
-               </div>
-           </div>
-
-           <div class="row justify-content-center">
-               <div class="col-7 col-md-3 col-lg-auto">
-                   <select th:field="*{genre}">
-                       <option th:value="'Action-Adventure'" th:text="Action-Adventure"></option>
-                       <option th:value="'Comedy'" th:text="Comedy"></option>
-                       <option th:value="'Fantasy'" th:text="Fantasy"></option>
-                       <option th:value="'Horror'" th:text="Horror"></option>
-                       <option th:value="'Mystery'" th:text="Mystery"></option>
-                       <option th:value="'Supernatural'" th:text="Supernatural"></option>
-                       <option th:value="'Sci-fi'" th:text="Sci-fi"></option>
-                   </select>
-               </div>
-           </div>
-           <div class="row justify-content-center mb-3">
-               <div class="col-7 col-md-3 col-lg-auto">
-                   <span class="text-danger small" th:if="${#fields.hasErrors('genre')}"
-                         th:errors="*{genre}">
-                   </span>
-               </div>
-           </div>
-           <div class="row justify-content-center">
-               <div class="col-7 col-md-3 col-lg-auto">
-                   <label>Episodes</label>
-               </div>
-           </div>
-           <div class="row justify-content-center">
-               <div class="col-7 col-md-3 col-lg-auto">
-                   <input id="episodes" type="number" th:field="*{episodes}" placeholder="Episodes"/>
-               </div>
-           </div>
-           <div class="row justify-content-center mb-3">
-               <div class="col-7 col-md-3 col-lg-auto">
-                   <span class="text-danger small" th:if="${#fields.hasErrors('episodes')}"
-                         th:errors="*{episodes}">
-                   </span>
+               <div class="row justify-content-center">
+                   <div>
+                       <select class="form-control selectpicker" th:field="*{manga}" id="manga">
+                           <option th:each="m: ${mangas}"
+                                   th:value="${m.id}"
+                                   th:text="${m.getMangaName()}"></option>
+                       </select>
+                   </div>
                </div>
            </div>
 
            <div class="form-group">
                <div class="row justify-content-center">
-                   <label for="classes" class="col-4 col-form-label">Add Weekly Anime:</label>
+                   <div>
+                       <label for="genre" class="col-form-label">Genre:</label>
+                   </div>
                </div>
                <div class="row justify-content-center">
-                   <select class="form-control selectpicker col-4" name="weeklyAnime" id="classes" multiple>
-                       <option th:each="animeW: ${weeklyA}"
-                               th:value="${animeW.id}"
-                               th:text="${animeW}"></option>
-                   </select>
+                   <div>
+                       <select class="form-control selectpicker" th:field="*{genre}" id="genre">
+                           <option th:value="'Action-Adventure'" th:text="Action-Adventure"></option>
+                           <option th:value="'Comedy'" th:text="Comedy"></option>
+                           <option th:value="'Fantasy'" th:text="Fantasy"></option>
+                           <option th:value="'Horror'" th:text="Horror"></option>
+                           <option th:value="'Mystery'" th:text="Mystery"></option>
+                           <option th:value="'Supernatural'" th:text="Supernatural"></option>
+                           <option th:value="'Sci-fi'" th:text="Sci-fi"></option>
+                       </select>
+                   </div>
+               </div>
+               <div class="row justify-content-center mb-3">
+                   <div class="col-7 col-md-3 col-lg-auto">
+                       <span class="text-danger small" th:if="${#fields.hasErrors('genre')}"
+                             th:errors="*{genre}">
+                       </span>
+                   </div>
+               </div>
+           </div>
+
+           <div class="form-group">
+               <div class="row justify-content-center">
+                   <div>
+                       <label for="episodes" class="col-form-label">Episodes:</label>
+                   </div>
+               </div>
+               <div class="row justify-content-center">
+                   <div>
+                       <input class="form-control" min="0" id="episodes" type="number" th:field="*{episodes}" placeholder="Episodes"/>
+                   </div>
+               </div>
+               <div class="row justify-content-center mb-3">
+                   <div class="col-7 col-md-3 col-lg-auto">
+                       <span class="text-danger small" th:if="${#fields.hasErrors('episodes')}"
+                             th:errors="*{episodes}">
+                       </span>
+                   </div>
+               </div>
+           </div>
+
+           <div class="form-group">
+               <div class="row justify-content-center">
+                   <div>
+                       <textarea class="form-control" rows="5" id="description" type="text" th:field="*{description}" placeholder="Description"></textarea>
+                   </div>
+               </div>
+               <div class="row justify-content-center mb-3">
+                   <div>
+                       <span class="text-danger small" th:if="${#fields.hasErrors('description')}"
+                             th:errors="*{description}">
+                       </span>
+                   </div>
                </div>
            </div>
 

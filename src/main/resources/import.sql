@@ -1,5 +1,5 @@
-INSERT  INTO weekly (id, anime_name, description, genre, episodes) VALUES (1, 'Dragon Ball Z', 'Goku a martial arts fighter, fights to protect his planet and to seek powerful opponents to fight.','Action-Adventure', 291);
-INSERT  INTO weekly (id, anime_name, description, genre, episodes) VALUES (2, 'FullMetal Alchemist', 'After they failed to bring there mother back to life. Brothers Edward and Alfonse Elric pay a price for their taboo.','Fantasy', 51);
-INSERT  INTO weekly (id, anime_name, description, genre, episodes) VALUES (3, 'Durarara!!', 'Ikebukuro Japan a city full of gangs, murder, and the infamous headless rider.','Supernatural', 24);
-INSERT  INTO weekly (id, anime_name, description, genre, episodes) VALUES (4, 'Trigun', 'Vash the stampede is an infamous gunman with a 60,000,000,000$$ bounty on his head.','Sci-fi', 24);
-INSERT  INTO weekly (id, anime_name, description, genre, episodes) VALUES (5, 'Another', 'Class 3-3 are face with a phenomena as each student meets a terrible death.','Horror', 20);
+INSERT  INTO manga (id, manga_name, volumes, genre, chapters) VALUES (1, 'Dragon Ball Z', 400,'Action-Adventure', 600);
+INSERT  INTO manga (id, manga_name, volumes, genre, chapters) VALUES (2, 'FullMetal Alchemist', 50,'Fantasy', 200);
+INSERT  INTO manga (id, manga_name, volumes, genre, chapters) VALUES (3, 'Durarara!!', 60,'Supernatural', 400);
+INSERT  INTO manga (id, manga_name, volumes, genre, chapters) VALUES (4, 'Trigun', 600, 'Action-Adventure', 24);
+INSERT  INTO manga (id, manga_name, volumes, genre, chapters) VALUES (5, 'Another', 45,'Horror', 200);

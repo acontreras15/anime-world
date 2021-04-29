@@ -1,9 +1,6 @@
 package com.mangaworld.animeworld.controllers;
 
-import com.mangaworld.animeworld.data.AnimeRepository;
 import com.mangaworld.animeworld.data.UserRepository;
-import com.mangaworld.animeworld.data.WeeklyRepository;
-import com.mangaworld.animeworld.models.Anime;
 import com.mangaworld.animeworld.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;

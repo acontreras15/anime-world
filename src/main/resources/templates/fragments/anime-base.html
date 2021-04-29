@@ -36,7 +36,11 @@
                    </li>
                    <li class="nav-item" th:classappend="${#request.getServletPath() == '/view-anime' ? 'active' : ''}"
                        sec:authorize="isAuthenticated()">
-                       <a class="nav-link" th:href="@{/weekly/view}">Anime of the Week</a>
+                       <a class="nav-link" th:href="@{/mangas/add}">Add Manga</a>
+                   </li>
+                   <li class="nav-item" th:classappend="${#request.getServletPath() == '/view-anime' ? 'active' : ''}"
+                       sec:authorize="isAuthenticated()">
+                       <a class="nav-link" th:href="@{/manga/view}">Manga</a>
                    </li>
                </ul>
                <a th:href="@{/logout}" class="btn btn-light btn-outline-dark" sec:authorize="isAuthenticated()">Logout</a>

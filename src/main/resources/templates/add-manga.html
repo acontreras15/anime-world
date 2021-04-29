@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="fragments/anime-base :: headerFiles"></th:block>
+    <title>Add Manga</title>
+</head>
+<body>
+<div th:replace="fragments/anime-base :: navigation"></div>
+<div th:replace="fragments/anime-base :: header"></div>
+<form class="mt-5" th:action="@{/mangas/add}" th:object="${manga}" method="post">
+
+    <div class="container-fluid">
+
+        <div class="form-group">
+            <div class="row justify-content-center">
+                <div>
+                    <label for="manganame" class="col-form-label">Add Manga</label>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div>
+                    <input class="form-control"  id="manganame" type="text" th:field="*{mangaName}" placeholder="Manga Name"/>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-3">
+                <div class="col-7 col-md-3 col-lg-auto">
+                       <span class="text-danger small" th:if="${#fields.hasErrors('mangaName')}"
+                             th:errors="*{mangaName}">
+                       </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row justify-content-center">
+                <div>
+                    <label for="genre" class="col-form-label">Genre:</label>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div>
+                    <select class="form-control selectpicker" th:field="*{genre}" id="genre">
+                        <option th:value="'Action-Adventure'" th:text="Action-Adventure"></option>
+                        <option th:value="'Comedy'" th:text="Comedy"></option>
+                        <option th:value="'Fantasy'" th:text="Fantasy"></option>
+                        <option th:value="'Horror'" th:text="Horror"></option>
+                        <option th:value="'Mystery'" th:text="Mystery"></option>
+                        <option th:value="'Supernatural'" th:text="Supernatural"></option>
+                        <option th:value="'Sci-fi'" th:text="Sci-fi"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-3">
+                <div class="col-7 col-md-3 col-lg-auto">
+                       <span class="text-danger small" th:if="${#fields.hasErrors('genre')}"
+                             th:errors="*{genre}">
+                       </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row justify-content-center">
+                <div>
+                    <label for="volumes" class="col-form-label">Volumes:</label>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div>
+                    <input class="form-control" min="0" id="volumes" type="number" th:field="*{volumes}" placeholder="Volumes"/>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-3">
+                <div class="col-7 col-md-3 col-lg-auto">
+                       <span class="text-danger small" th:if="${#fields.hasErrors('volumes')}"
+                             th:errors="*{volumes}">
+                       </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row justify-content-center">
+                <div>
+                    <label for="chapters" class="col-form-label">Chapters:</label>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div>
+                    <input class="form-control" min="0" id="chapters" type="number" th:field="*{chapters}" placeholder="Chapters"/>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-3">
+                <div class="col-7 col-md-3 col-lg-auto">
+                       <span class="text-danger small" th:if="${#fields.hasErrors('chapters')}"
+                             th:errors="*{chapters}">
+                       </span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center mb-3">
+            <div class="col-7 col-md-3 col-lg-auto">
+                <input class="btn btn-light btn-outline-dark" type="submit" value="Submit"/>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+<div th:replace="fragments/anime-base :: footer"></div>
+</body>
+<th:block th:replace="fragments/anime-base :: scripts"></th:block>
+</html>

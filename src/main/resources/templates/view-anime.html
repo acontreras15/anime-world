@@ -16,125 +16,148 @@
     </div>
 
     <form class="mt-5" th:action="@{/anime/edit/{id}(id=${anime.id})}" th:object="${anime}" method="post">
+
         <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-7 col-md-3 col-lg-auto">
-                    <input id="animeName" type="text" th:field="*{animeName}" placeholder="Anime Name"/>
-                </div>
-            </div>
-            <div class="row justify-content-center mb-3">
-                <div class="col-7 col-md-3 col-lg-auto">
-                   <span class="text-danger small" th:if="${#fields.hasErrors('animeName')}"
-                         th:errors="*{animeName}">
-                   </span>
-                </div>
-            </div>
 
-            <div class="row justify-content-center">
-                <div class="col-7 col-md-3 col-lg-auto">
-                    <textarea id="description" type="text" th:field="*{description}" placeholder="Description"></textarea>
-                </div>
-            </div>
-            <div class="row justify-content-center mb-3">
-                <div class="col-7 col-md-3 col-lg-auto">
-                   <span class="text-danger small" th:if="${#fields.hasErrors('description')}"
-                         th:errors="*{description}">
-                   </span>
-                </div>
-            </div>
-
-            <div class="row justify-content-center">
-                <div class="col-7 col-md-3 col-lg-auto">
-                    <select th:field="*{genre}">
-                        <option th:value="'Action-Adventure'" th:text="Action-Adventure"></option>
-                        <option th:value="'Comedy'" th:text="Comedy"></option>
-                        <option th:value="'Horror'" th:text="Horror"></option>
-                        <option th:value="'Mystery'" th:text="Mystery"></option>
-                        <option th:value="'Supernatural'" th:text="Supernatural"></option>
-                        <option th:value="'Sci-fi'" th:text="Sci-fi"></option>
-                    </select>
-                </div>
-            </div>
-            <div class="row justify-content-center mb-3">
-                <div class="col-7 col-md-3 col-lg-auto">
-                   <span class="text-danger small" th:if="${#fields.hasErrors('genre')}"
-                         th:errors="*{genre}">
-                   </span>
-                </div>
-            </div>
-
-            <div class="row justify-content-center">
-                <div class="col-7 col-md-3 col-lg-auto">
-                    <input id="episodes" type="number" th:field="*{episodes}" placeholder="Episodes"/>
-                </div>
-            </div>
-            <div class="row justify-content-center mb-3">
-                <div class="col-7 col-md-3 col-lg-auto">
-                   <span class="text-danger small" th:if="${#fields.hasErrors('episodes')}"
-                         th:errors="*{episodes}">
-                   </span>
-                </div>
-            </div>
-
-            <div class="row justify-content-center mb-3">
-                <div class="col-8 col-md-3 col-lg-auto">
-                    <span th:text="'Date created: ' + ${#temporals.format(anime.created, 'dd-MM-yyyy HH:mm')}"></span><br>
-                    <span th:text="'Date created: ' + ${#temporals.format(anime.modified, 'dd-MM-yyyy HH:mm')}"></span>
-                </div>
-            </div>
-
-            <div class="row justify-content-center mb-3">
-                <div class="col-7 col-md-3 col-lg-auto">
-                    <input class="btn btn-light btn-outline-dark" type="submit" value="Submit"/>
-                    <a class="ml-2 btn btn-light btn-outline-dark" th:href="@{/anime/view}">Cancel</a>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid mt-5">
-            <div class="row justify-content-center mb-5">
-                <h3>Weekly Anime</h3>
-            </div>
-            <div th:each="animeWeekly: *{weeklyAnime}">
-                <div class="row justify-content-center mb-5">
-                    <div class="col-2 col-md-4"></div>
-                    <div class="col-8 col-md-4 card">
-                        <div class="card-body">
-                            <h4 class="card-title d-inline" th:text="${animeWeekly.animeName}"></h4>
-                            <a class="ml-3 text-danger"
-                               data-toggle="modal"
-                               th:data-target="'#animeModal'+${anime.id}"><i class="fas fa-trash-alt"></i></a>
-                            <div class="modal fade" th:id="'animeModal'+${anime.id}" role="dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <div class="modal-header">
-                                            <h5>Are you sure you want to delete?</h5>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a th:href="@{/anime/{id}/delete-weekly/{weeklyId}(id=${anime.id}, weeklyId=${animeWeekly.id})}" class="btn btn-primary" role="button">Yes</a>
-                                        <a type="button" class="btn btn-dark" th:href="@{/anime/view}">No</a>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <br>
-                            <h5 class="card-title d-inline">Genre</h5>
-                            <br>
-                            <span th:text="${animeWeekly.genre}"></span>
-                            <br>
-                            <h5 class="card-title d-inline">Description</h5>
-                            <br>
-                            <span th:text="${animeWeekly.description}"></span>
-                            <br>
-                            <h5 class="card-title d-inline">Episodes</h5>
-                            <br>
-                            <span th:text="${animeWeekly.episodes}"></span>
-                        </div>
+            <!--
+                       <div class="row justify-content-center">
+                           <div class="col-7 col-md-3 col-lg-auto">
+                               <input id="animeName" type="text" th:field="*{animeName}" placeholder="Anime Name"/>
+                               </div>
+                       </div>
+                       <div class="row justify-content-center mb-3">
+                           <div class="col-7 col-md-3 col-lg-auto">
+                               <span class="text-danger small" th:if="${#fields.hasErrors('animeName')}"
+                                      th:errors="*{animeName}">
+                               </span>
+                           </div>
+                       </div>
+            -->
+            <div class="form-group">
+                <div class="row justify-content-center">
+                    <div>
+                        <label for="manga" class="col-form-label">Anime/Manga Name:</label>
                     </div>
-                    <div class="col-2 col-md-4"></div>
+                </div>
+                <div class="row justify-content-center">
+                    <div>
+                        <select readonly class="form-control selectpicker" th:field="*{manga}" id="manga">
+                            <option th:value="${anime.manga.id}"
+                                    th:text="${anime.manga.mangaName}"></option>
+                        </select>
+                    </div>
                 </div>
             </div>
+
+            <div class="form-group">
+                <div class="row justify-content-center">
+                    <div>
+                        <label for="genre" class="col-form-label">Anime Genre:</label>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div>
+                        <select class="form-control selectpicker" th:field="*{genre}" id="genre">
+                            <option th:value="'Action-Adventure'" th:text="Action-Adventure"></option>
+                            <option th:value="'Comedy'" th:text="Comedy"></option>
+                            <option th:value="'Fantasy'" th:text="Fantasy"></option>
+                            <option th:value="'Horror'" th:text="Horror"></option>
+                            <option th:value="'Mystery'" th:text="Mystery"></option>
+                            <option th:value="'Supernatural'" th:text="Supernatural"></option>
+                            <option th:value="'Sci-fi'" th:text="Sci-fi"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row justify-content-center mb-3">
+                    <div class="col-7 col-md-3 col-lg-auto">
+                       <span class="text-danger small" th:if="${#fields.hasErrors('genre')}"
+                             th:errors="*{genre}">
+                       </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row justify-content-center">
+                    <div>
+                        <label for="episodes" class="col-form-label">Anime Episodes:</label>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div>
+                        <input class="form-control" min="0" id="episodes" type="number" th:field="*{episodes}"/>
+                    </div>
+                </div>
+                <div class="row justify-content-center mb-3">
+                    <div class="col-7 col-md-3 col-lg-auto">
+                       <span class="text-danger small" th:if="${#fields.hasErrors('episodes')}"
+                             th:errors="*{episodes}">
+                       </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row justify-content-center">
+                    <div>
+                        <textarea class="form-control" rows="5" id="description" type="text" th:field="*{description}" placeholder="Description"></textarea>
+                    </div>
+                </div>
+                <div class="row justify-content-center mb-3">
+                    <div>
+                       <span class="text-danger small" th:if="${#fields.hasErrors('description')}"
+                             th:errors="*{description}">
+                       </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row justify-content-center mb-3">
+                    <div class="col-8 col-md-3 col-lg-auto">
+                        <span th:text="'Date created: ' + ${#temporals.format(anime.created, 'dd-MM-yyyy HH:mm')}"></span><br>
+                        <span th:text="'Date modified: ' + ${#temporals.format(anime.modified, 'dd-MM-yyyy HH:mm')}"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row justify-content-center mb-3">
+                    <div class="col-7 col-md-3 col-lg-auto">
+                        <input class="btn btn-light btn-outline-dark" type="submit" value="Submit"/>
+                        <a class="ml-2 btn btn-light btn-outline-dark" th:href="@{/anime/view}">Cancel</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row justify-content-center">
+                    <div>
+                        <label for="volumes" class="col-form-label">Manga Volumes:</label>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div>
+                        <input readonly class="form-control" min="0" id="volumes" type="number" th:field="*{manga.volumes}"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row justify-content-center">
+                    <div>
+                        <label for="chapters" class="col-form-label">Manga Chapters:</label>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div>
+                        <input readonly class="form-control" min="0" id="chapters" type="number" th:field="*{manga.chapters}"/>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     </form>
     <div th:replace="fragments/anime-base :: footer"></div>
 </body>

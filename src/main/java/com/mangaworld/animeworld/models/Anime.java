@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.Set;
+
 
 @Entity
 public class Anime {
@@ -15,8 +15,6 @@ public class Anime {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
-    @NotBlank(message = "Anime name cannot be blank")
-    @Column(unique = true)
     private String animeName;
 
     @NotBlank(message = "Anime needs a genre")
@@ -37,10 +35,10 @@ public class Anime {
     @JoinColumn(name = "user_id")
     private User user;
 
-
-
-    @OneToMany
-    private Set<Weekly> weeklyAnime;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "manga_id")
+    @NotNull
+    private Manga manga;
 
     public Anime(){
         this.animeName = "";
@@ -106,12 +104,12 @@ public class Anime {
 
     public long getId() { return this.id; }
 
-    public Set<Weekly> getWeeklyAnime() {
-        return weeklyAnime;
+    public Manga getManga() {
+        return manga;
     }
 
-    public void setWeeklyAnime(Set<Weekly> weeklyAnime) {
-        this.weeklyAnime = weeklyAnime;
+    public void setManga(Manga manga) {
+        this.manga = manga;
     }
 
     public User getUser() {
