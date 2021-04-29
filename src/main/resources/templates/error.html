@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="fragments/anime-base :: headerFiles"></th:block>
+    <title>Error Error!</title>
+</head>
+<body>
+    <div th:replace="fragments/anime-base :: navigation"></div>
+    <div th:replace="fragments/anime-base :: header"></div>
+
+    <br><br>
+    <div class="row justify-content-center">
+        <div class="col-8 mb3 text-center text-dark">
+            <h2 th:text="${message}">Error! Something went wrong! We're working on it...</h2>
+        </div>
+    </div>
+
+    <div th:replace="fragments/anime-base :: footer"></div>
+</body>
+<th:block th:replace="fragments/anime-base :: scripts"></th:block>
+</html>
