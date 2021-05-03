@@ -4,12 +4,24 @@
     height: 200px;
 
 }
+#animeTwo {
+
+    width: 300px;
+    height: 200px;
+
+}
+#mangaOne{
+    width: 300px;
+    height: 200px;
+
+}
 #logo{
     width: 50px;
     height: 50px;
 }
-body{
+.body{
     padding-bottom: 10%;
+    background-color: #1a1a1a;
 }
 
 .footer{
@@ -18,7 +30,8 @@ body{
     width: 100%;
     height: 60px;
     line-height: 60px;
-    background-color: whitesmoke;
+    background-color: #3399ff;
+
 }
 
 input {
@@ -28,3 +41,29 @@ input {
 select {
     text-align-last: center;
 }
+
+.navbar-light{
+    background-color: #3399ff;
+}
+#title{
+    color: #3399ff;
+    font-family: "Arial Narrow";
+}
+.nav-item{
+    font-family: "Arial Rounded MT Bold";
+    font-size: 20px;
+    font-weight: bold;
+}
+#error{
+    color: whitesmoke;
+}
+label{
+    color: #3399ff;
+}
+#welcome{
+    color: #3399ff;
+}
+#goodbye{
+    color: #3399ff;
+}
+

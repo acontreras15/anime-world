@@ -5,7 +5,8 @@
     <th:block th:insert="fragments/anime-base :: headerFiles"></th:block>
     <title>Sign Up</title>
 </head>
-<body>
+<body class="body">
+<div th:replace="fragments/anime-base :: navigation"></div>
 <div th:replace="fragments/anime-base :: header"></div>
 <form class="mt-5" th:action="@{/signup}" th:object="${user}" method="post">
     <div class="container-fluid">

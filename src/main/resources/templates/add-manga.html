@@ -5,10 +5,18 @@
     <th:block th:insert="fragments/anime-base :: headerFiles"></th:block>
     <title>Add Manga</title>
 </head>
-<body>
+<body class="body">
 <div th:replace="fragments/anime-base :: navigation"></div>
 <div th:replace="fragments/anime-base :: header"></div>
 <form class="mt-5" th:action="@{/mangas/add}" th:object="${manga}" method="post">
+
+    <div class="container-fluid">
+        <div class="row justify-content-center mt-3 mb-3">
+            <div class="col-12 text-center">
+                <img id="mangaOne" th:src="@{/img/kingdomhearts.jpg}" />
+            </div>
+        </div>
+    </div>
 
     <div class="container-fluid">
 

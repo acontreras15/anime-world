@@ -63,12 +63,6 @@ public class AnimeController {
 
     @PostMapping("/edit/{id}")
     public String handleEditAnimeForm(@PathVariable Long id, @Valid @ModelAttribute("anime") Anime anime, Errors errors){
-        System.out.println(anime.getAnimeName());
-        System.out.println(anime.getManga());
-        System.out.println(anime.getDescription());
-        System.out.println(anime.getEpisodes());
-        System.out.println(anime.getGenre());
-        System.out.println(anime.getUser());
         if(errors.hasErrors())
             return "view-anime";
 

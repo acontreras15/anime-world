@@ -5,7 +5,7 @@
     <th:block th:insert="fragments/anime-base :: headerFiles"></th:block>
     <title>Anime</title>
 </head>
-<body>
+<body class="body">
     <div th:replace="fragments/anime-base :: navigation"></div>
     <div th:replace="fragments/anime-base :: header"></div>
 
@@ -19,20 +19,6 @@
 
         <div class="container-fluid">
 
-            <!--
-                       <div class="row justify-content-center">
-                           <div class="col-7 col-md-3 col-lg-auto">
-                               <input id="animeName" type="text" th:field="*{animeName}" placeholder="Anime Name"/>
-                               </div>
-                       </div>
-                       <div class="row justify-content-center mb-3">
-                           <div class="col-7 col-md-3 col-lg-auto">
-                               <span class="text-danger small" th:if="${#fields.hasErrors('animeName')}"
-                                      th:errors="*{animeName}">
-                               </span>
-                           </div>
-                       </div>
-            -->
             <div class="form-group">
                 <div class="row justify-content-center">
                     <div>

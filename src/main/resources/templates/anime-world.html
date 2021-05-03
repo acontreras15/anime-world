@@ -6,7 +6,7 @@
    <th:block th:insert="fragments/anime-base :: headerFiles"></th:block>
     <title>Anime World</title>
 </head>
-<body>
+<body class="body">
 <div th:replace="fragments/anime-base :: navigation"></div>
 <div th:replace="fragments/anime-base :: header"></div>
 <div class="container-fluid">
@@ -19,14 +19,14 @@
 <div class="container-fluid">
     <div class="row justify-content-center mb-3" sec:authorize="isAuthenticated()">
         <div class="col-8 col-md-3 text-center">
-            <h4 th:text="'Welcome ' + ${user.firstName} + ' ' + ${user.lastName} + '!'"></h4>
+            <h4 th:text="'Welcome ' + ${user.firstName} + ' ' + ${user.lastName} + '!'" id="welcome"></h4>
         </div>
     </div>
     <div class="row justify-content-center mb-3" sec:authorize="isAnonymous()">
         <div class="col-4 col-md-4 text-center">
         </div>
         <div class="row col-4 col-md-4 text-center">
-            <div class="col-4 col-md-4 text-center">
+            <div class="col-2 col-md-4 text-center">
                 <a th:href="@{/signup}" class="btn btn-light btn-outline-dark">Sign Up</a>
             </div>
             <div class="col-4 col-md-4 text-center">
