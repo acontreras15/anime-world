@@ -48,6 +48,7 @@ select {
 #title{
     color: #3399ff;
     font-family: "Arial Narrow";
+
 }
 .nav-item{
     font-family: "Arial Rounded MT Bold";
@@ -66,4 +67,12 @@ label{
 #goodbye{
     color: #3399ff;
 }
-
+#created{
+    color: #3399ff;
+}
+#modified{
+    color: #3399ff;
+}
+#edit{
+    color: #3399ff;
+}
